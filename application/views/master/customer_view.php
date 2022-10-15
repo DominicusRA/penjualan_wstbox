@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Laporan WST | Master Customer</title>
 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -110,7 +113,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url() ?>index.php/penjualan_controler" class="nav-link">
+                                    <a href="<?php echo base_url() ?>index.php/penjualan_controller" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Penjualan</p>
                                     </a>
@@ -285,6 +288,8 @@
     <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="<?php echo base_url() ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url() ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

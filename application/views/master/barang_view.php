@@ -110,7 +110,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url() ?>index.php/penjualan_controler" class="nav-link">
+                                    <a href="<?php echo base_url() ?>index.php/penjualan_controller" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Penjualan</p>
                                     </a>

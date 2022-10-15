@@ -4,8 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laporan WST | Master User</title>
+    <title>Laporan WST | Penjualan</title>
 
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -18,6 +22,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/adminlte.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -70,8 +75,8 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-database"></i>
                                 <p>
                                     Master
@@ -80,7 +85,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url() ?>index.php/user_controller" class="nav-link active">
+                                    <a href="<?php echo base_url() ?>index.php/user_controller" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>User</p>
                                     </a>
@@ -92,15 +97,15 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url() ?>index.php/barang_controller" class="nav-link">
+                                    <a href="<?php echo base_url() ?>index.php/barang_controller" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Barang</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
                                 <!-- <i class="nav-icon fa fa-credit-card-alt"></i> -->
                                 <i class="nav-icon fa fa-money"></i>
                                 <p>
@@ -110,7 +115,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo base_url() ?>index.php/penjualan_controller" class="nav-link">
+                                    <a href="<?php echo base_url() ?>index.php/penjualan_controller" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Penjualan</p>
                                     </a>
@@ -155,7 +160,7 @@
                         <div class="col-sm-6">
                             <!-- <h1 class="m-0">Master User</h1> -->
                             <ol class="breadcrumb float-sm-left">
-                                <li class="breadcrumb-item">Master User</li>
+                                <li class="breadcrumb-item">Penjualan</li>
                                 <!-- <li class="breadcrumb-item active">Dashboard v1</li> -->
                             </ol>
                         </div><!-- /.col -->
@@ -175,10 +180,10 @@
                                 <div class="card-body">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h3 class="card-title">Data User</h3>
+                                            <h3 class="card-title">Data Penjualan</h3>
                                             <div class="card-tools">
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-user">
-                                                    Tambah User
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add-penjualan">
+                                                    Buat Penjualan
                                                 </button>
                                             </div>
                                         </div>
@@ -187,18 +192,30 @@
                                             <table id="example1" class="table table-bordered table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nama</th>
-                                                        <th>Tanggal Daftar</th>
+                                                        <th>No Transaksi</th>
+                                                        <th>Tanggal</th>
+                                                        <th>Nama Customer</th>
+                                                        <th>Kode Barang</th>
+                                                        <th>Nama Barang</th>
+                                                        <th>Jumlah</th>
+                                                        <th>Harga Jual</th>
+                                                        <th>Total</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php
-                                                    foreach ($user->result_array() as $data_user) :
+                                                    foreach ($penjualan->result_array() as $data_penjualan) :
                                                     ?>
                                                         <tr>
-                                                            <td><?= $data_user['username'] ?></td>
-                                                            <td><?= $data_user['tanggal'] ?></td>
+                                                            <td><?= $data_penjualan['no_transaksi'] ?></td>
+                                                            <td><?= $data_penjualan['tanggal'] ?></td>
+                                                            <td><?= $data_penjualan['nama'] ?></td>
+                                                            <td><?= $data_penjualan['kode'] ?></td>
+                                                            <td><?= $data_penjualan['nama_barang'] ?></td>
+                                                            <td><?= $data_penjualan['jumlah'] ?></td>
+                                                            <td>Rp <?= number_format($data_penjualan['harga'], 2, ',', '.') ?></td>
+                                                            <td>Rp <?= number_format($data_penjualan['harga'] * $data_penjualan['jumlah'], 2, ',', '.') ?></td>
                                                             <td>
                                                                 <!-- <button type="button" class="btn btn-primary">Edit</button>
                                                                 <button type="button" class="btn btn-primary">Detail</button>
@@ -238,49 +255,102 @@
     </div>
     <!-- ./wrapper -->
 
-    <div class="modal fade" id="modal-add-user">
-        <div class="modal-dialog">
+    <div class="modal fade" id="modal-add-penjualan">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Data User</h4>
+                    <h4 class="modal-title">Data Penjualan</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url() ?>index.php/user_controller/add" id="user_form" method="post">
+                    <form action="<?php echo base_url() ?>index.php/penjualan_controller/add" id="barang_form" method="post">
                         <div class="form-group">
-                            <label for="nama">
-                                Nama
+                            <label for="no_transaksi">
+                                No Transaksi
                             </label>
-                            <input type="text" id="nama" class="form-control" name="nama">
+                            <input type="text" id="no_transaksi" class="form-control" name="no_transaksi">
                         </div>
                         <div class="form-group">
-                            <label for="username">
-                                Username
+                            <label for="id_customer">
+                                Customer
                             </label>
-                            <input type="text" id="username" class="form-control" name="username">
+                            <select name="id_customer" class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>
+                                <?php
+                                foreach ($customer->result_array() as $data_customer) :
+                                ?>
+                                    <option value="<?= $data_customer['id_customer'] ?>"><?= $data_customer['nama'] ?></option>
+                                <?php endforeach ?>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="password">
-                                Password
+                            <label for="id_barang">
+                                Barang
                             </label>
-                            <input type="text" id="password" class="form-control" name="password">
+                            <select id="id_barang" name="id_barang" onchange="barang()" class="form-control select2" style="width: 100%;">
+                                <option selected="selected"></option>
+                                <?php
+                                foreach ($barang->result_array() as $data_barang) :
+                                ?>
+                                    <option value="<?= $data_barang['id_barang'] ?>"><?= $data_barang['nama'] ?></option>
+                                <?php endforeach ?>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="harga">
+                                Kode Barang
+                            </label>
+                            <!-- <div id="kode_barang"></div> -->
+                            <input type="text" id="kode_barang" class="form-control" name="kode_barang">
+                        </div>
+                        <div class="form-group">
+                            <label for="harga">
+                                Harga
+                            </label>
+                            <input type="number" onkeyup="total_harga()" id="harga" class="form-control" name="harga">
+                        </div>
+                        <div class="form-group">
+                            <label for="jumlah">
+                                Jumlah
+                            </label>
+                            <input type="number" onkeyup="total_harga()" id="jumlah" class="form-control" name="jumlah">
+                        </div>
+                        <div class="form-group">
+                            <label for="jumlah">
+                                Total
+                            </label>
+                            <input type="text" id="total" class="form-control" name="total">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button form="user_form" type="submit" class="btn btn-primary">Simpan</button>
+                    <button form="barang_form" type="submit" class="btn btn-primary">Simpan</button>
                 </div>
             </div>
             <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <?php
+    $array_barang = array();
+    foreach ($barang->result_array() as $data_barang) {
+        $array_barang += array($data_barang['id_barang'] => $data_barang['kode']);
+    }
+    // print_r($array_barang);
+    // echo "<pre>";
+    // print_r($data_penjualan);
+    // // echo $menu['nama'];
+    // echo "</pre>";
+    ?>
 
     <!-- jQuery -->
     <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?php echo base_url() ?>assets/plugins/select2/js/select2.full.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?php echo base_url() ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables  & Plugins -->
@@ -300,6 +370,7 @@
     <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
+
     <script>
         $(function() {
             $("#example1").DataTable({
@@ -307,8 +378,24 @@
                 "lengthChange": false,
                 "autoWidth": false
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
 
         });
+        var data = [];
+        // console.log(<?= json_encode($array_barang) ?>)
+
+        function barang() {
+            var id_barang = document.getElementById('id_barang').value;
+            var arr_barang = <?= json_encode($array_barang) ?>;
+            document.getElementById('kode_barang').value = arr_barang[id_barang];
+            console.log(arr_barang[id_barang]);
+        }
     </script>
 </body>
 
