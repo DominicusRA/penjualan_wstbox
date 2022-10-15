@@ -285,44 +285,61 @@
                                 <?php endforeach ?>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="id_barang">
-                                Barang
-                            </label>
-                            <select id="id_barang" name="id_barang" onchange="barang()" class="form-control select2" style="width: 100%;">
-                                <option selected="selected"></option>
-                                <?php
-                                foreach ($barang->result_array() as $data_barang) :
-                                ?>
-                                    <option value="<?= $data_barang['id_barang'] ?>"><?= $data_barang['nama'] ?></option>
-                                <?php endforeach ?>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="id_barang">
+                                        Barang
+                                    </label>
+                                    <select id="id_barang" name="id_barang" onchange="barang()" class="form-control select2" style="width: 100%;">
+                                        <option selected="selected"></option>
+                                        <?php
+                                        foreach ($barang->result_array() as $data_barang) :
+                                        ?>
+                                            <option value="<?= $data_barang['id_barang'] ?>"><?= $data_barang['nama'] ?></option>
+                                        <?php endforeach ?>
 
-                            </select>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col">
+
+                                <div class="form-group">
+                                    <label for="harga">
+                                        Kode Barang
+                                    </label>
+                                    <!-- <div id="kode_barang"></div> -->
+                                    <input type="text" id="kode_barang" class="form-control" name="kode_barang" disabled>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="harga">
-                                Kode Barang
-                            </label>
-                            <!-- <div id="kode_barang"></div> -->
-                            <input type="text" id="kode_barang" class="form-control" name="kode_barang">
-                        </div>
-                        <div class="form-group">
-                            <label for="harga">
-                                Harga
-                            </label>
-                            <input type="number" onkeyup="total_harga()" id="harga" class="form-control" name="harga">
-                        </div>
-                        <div class="form-group">
-                            <label for="jumlah">
-                                Jumlah
-                            </label>
-                            <input type="number" onkeyup="total_harga()" id="jumlah" class="form-control" name="jumlah">
-                        </div>
-                        <div class="form-group">
-                            <label for="jumlah">
-                                Total
-                            </label>
-                            <input type="text" id="total" class="form-control" name="total">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="harga">
+                                        Harga
+                                    </label>
+                                    <input type="number" onkeyup="total_harga()" id="harga" class="form-control" name="harga">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="jumlah">
+                                        Jumlah
+                                    </label>
+                                    <input type="number" onkeyup="total_harga()" id="jumlah" class="form-control" name="jumlah">
+                                </div>
+
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="jumlah">
+                                        Total
+                                    </label>
+                                    <input type="text" id="total" class="form-control" name="total" disabled>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
