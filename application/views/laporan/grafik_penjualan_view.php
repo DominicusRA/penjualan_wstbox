@@ -207,7 +207,7 @@
                                             </div>
                                             <div class="col">
                                                 <div class="form-group">
-                                                    <select name="id_barang" onchange="barang()" class="form-control select2" style="width: 100%;">
+                                                    <select name="id_barang" class="form-control select2" style="width: 100%;">
                                                         <option selected="selected"></option>
                                                         <?php
                                                         foreach ($barang->result_array() as $data_barang) :
@@ -255,30 +255,8 @@
                                             </div>
                                         </div>
                                         <!-- /.card-header -->
-
                                         <div class="card-body">
-                                            <div class="card card-success">
-                                                <div class="card-header">
-                                                    <h3 class="card-title">Bar Chart</h3>
-
-                                                    <div class="card-tools">
-                                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                                            <i class="fas fa-minus"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                                            <i class="fas fa-times"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="card-body">
-                                                    <div class="chart">
-                                                        <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-                                                    </div>
-                                                </div>
-                                                <!-- /.card-body -->
-                                            </div>
                                         </div>
-
                                         <!-- /.card-body -->
                                     </div>
                                 </div>
@@ -316,8 +294,7 @@
     // // echo $menu['nama'];
     // echo "</pre>";
     ?>
-    <!-- ChartJS -->
-    <script src="<?php echo base_url() ?>assets/plugins/chart.js/Chart.min.js"></script>
+
     <!-- jQuery -->
     <script src="<?php echo base_url() ?>assets/plugins/jquery/jquery.min.js"></script>
     <!-- Select2 -->
@@ -360,17 +337,9 @@
 
         });
         var data = [];
-        console.log(<?= json_encode($array_barang) ?>)
-
-        function barang() {
-            var id_barang = document.getElementById('id_barang').value;
-            var arr_barang = <?= json_encode($array_barang) ?>;
-            document.getElementById('kode_barang').value = arr_barang[id_barang];
-            console.log(arr_barang[id_barang]);
-        }
+        // console.log(<?= json_encode($array_barang) ?>)
 
         function filter() {}
-        console.log("masuk ke sini");
         console.log(<?= json_encode($penjualan->result()) ?>);
     </script>
 </body>
