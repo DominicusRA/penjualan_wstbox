@@ -10,8 +10,12 @@ class customer_controller extends CI_Controller
     }
     public function index()
     {
-        $data['customer'] = $this->customer_m->get();
-        $this->load->view('master/customer_view', $data);
+        if ($this->session->userdata('nama') != null) {
+            $data['customer'] = $this->customer_m->get();
+            $this->load->view('master/customer_view', $data);
+        } else {
+            redirect('login_controller');
+        };
     }
     public function add()
     {

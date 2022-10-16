@@ -10,7 +10,11 @@ class login_controller extends CI_Controller
     }
     public function index()
     {
-        $this->load->view('login_view');
+        if ($this->session->userdata('nama') != null) {
+            redirect('user_controller');
+        } else {
+            $this->load->view('login_view');
+        };
     }
     public function cek_login()
     {
@@ -24,15 +28,19 @@ class login_controller extends CI_Controller
             // echo "ada ada";
             foreach ($status as $apps) {
                 $session_data = array(
-                    'id_user' => $apps->nama,
-                    'nama' => $apps->akses
+                    'nama' => $apps->nama
                 );
                 $this->session->set_userdata($session_data);
             }
-            redirect('dashboard_controller');
+            redirect('user_controller');
         } else {
             // echo "tidak ada data";
             $this->index();
         }
+    }
+    public function log_out()
+    {
+        $this->session->sess_destroy();
+        redirect("login_controller");
     }
 }

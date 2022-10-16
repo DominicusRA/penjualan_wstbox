@@ -12,10 +12,15 @@ class penjualan_controller extends CI_Controller
     }
     public function index()
     {
-        $data['barang'] = $this->barang_m->get();
-        $data['penjualan'] = $this->penjualan_m->get();
-        $data['customer'] = $this->customer_m->get();
-        $this->load->view('transaksi/penjualan_view', $data);
+
+        if ($this->session->userdata('nama') != null) {
+            $data['barang'] = $this->barang_m->get();
+            $data['penjualan'] = $this->penjualan_m->get();
+            $data['customer'] = $this->customer_m->get();
+            $this->load->view('transaksi/penjualan_view', $data);
+        } else {
+            redirect('login_controller');
+        };
     }
     public function add()
     {

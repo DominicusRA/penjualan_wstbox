@@ -10,8 +10,13 @@ class user_controller extends CI_Controller
     }
     public function index()
     {
-        $data['user'] = $this->user_m->get();
-        $this->load->view('master/user_view', $data);
+
+        if ($this->session->userdata('nama') != null) {
+            $data['user'] = $this->user_m->get();
+            $this->load->view('master/user_view', $data);
+        } else {
+            redirect('login_controller');
+        };
     }
     public function add()
     {
