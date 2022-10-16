@@ -37,7 +37,7 @@ class laporan_grafik_controller extends CI_Controller
         $data['customer'] = $this->customer_m->get();
         $data['penjualan'] = $this->laporan_grafik_m->get($data_filter, $data_date);
         $this->load->view('laporan/grafik_penjualan_view', $data);
-        echo (json_encode($data['penjualan']->result()));
+        // echo (json_encode($sdata['penjualan']->result()));
         // echo "haloo";
     }
 }

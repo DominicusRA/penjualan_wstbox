@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     <!-- daterange picker -->
-    <link rel="stylesheet" href=".<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/daterangepicker/daterangepicker.css">
 
     <script src="<?php echo base_url() ?>assets/js/custom.js"></script>
     <!-- Google Font: Source Sans Pro -->
@@ -40,15 +40,17 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
+                    <a class="nav-link" href="<?php echo base_url() ?>index.php/login_controller/log_out" role="button">
+                        <i class="fas fa-power-off"></i>
                     </a>
                 </li>
             </ul>
