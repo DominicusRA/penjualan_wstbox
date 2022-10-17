@@ -272,7 +272,26 @@
                             <label for="no_transaksi">
                                 No Transaksi
                             </label>
-                            <input type="text" id="no_transaksi" class="form-control" name="no_transaksi">
+                            <?php
+                            if ($kode_terakhir->result_array() == null) {
+                                $kode_penjualan = "PNJL/001/" . date("m") . "/" . date("Y");
+                            } else {
+                                foreach ($kode_terakhir->result_array() as $kode_terakhir) :
+                                    if ($kode_terakhir['no_transaksi'] != null) {
+                                        $explode_kode = explode("/", $kode_terakhir['no_transaksi']);
+                                        // print_r($explode_kode);
+                                        $last_explode_kode = $explode_kode[1] + 1;
+                                        $last_explode_kode = sprintf("%03s", ($last_explode_kode));
+                                        // echo "<br>" . $last_explode_kode;
+                                        $kode_penjualan = "PNJL/" . $last_explode_kode . "/" . date("m") . "/" . date("Y");
+                                        // $kode_barang = "BRNG/001/" . date("m") . "/" . date("Y");
+                                    } else {
+                                        $kode_penjualan = "PNJL/001/" . date("m") . "/" . date("Y");
+                                    }
+                                endforeach;
+                            }
+                            ?>
+                            <input type="text" value="<?= $kode_penjualan ?>" id="no_transaksi" class="form-control" name="no_transaksi" readonly>
                         </div>
                         <div class="form-group">
                             <label for="id_customer">

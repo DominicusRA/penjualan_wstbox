@@ -12,6 +12,7 @@ class Customer_controller extends CI_Controller
     {
         if ($this->session->userdata('nama') != null) {
             $data['customer'] = $this->customer_m->get();
+            $data['kode_terakhir'] = $this->customer_m->get_code();
             $this->load->view('master/customer_view', $data);
         } else {
             redirect('login_controller');

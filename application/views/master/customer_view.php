@@ -260,7 +260,26 @@
                             <label for="kode">
                                 Kode Customer
                             </label>
-                            <input type="text" id="kode" class="form-control" name="kode">
+                            <?php
+                            if ($kode_terakhir->result_array() == null) {
+                                $kode_customer = "CSTR/001/" . date("m") . "/" . date("Y");
+                            } else {
+                                foreach ($kode_terakhir->result_array() as $kode_terakhir) :
+                                    if ($kode_terakhir['kode'] != null) {
+                                        $explode_kode = explode("/", $kode_terakhir['kode']);
+                                        // print_r($explode_kode);
+                                        $last_explode_kode = $explode_kode[1] + 1;
+                                        $last_explode_kode = sprintf("%03s", ($last_explode_kode));
+                                        // echo "<br>" . $last_explode_kode;
+                                        $kode_customer = "CSTR/" . $last_explode_kode . "/" . date("m") . "/" . date("Y");
+                                        // $kode_barang = "BRNG/001/" . date("m") . "/" . date("Y");
+                                    } else {
+                                        $kode_customer = "CSTR/001/" . date("m") . "/" . date("Y");
+                                    }
+                                endforeach;
+                            }
+                            ?>
+                            <input type="text" value=<?= $kode_customer ?> id="kode" class="form-control" name="kode" readonly>
                         </div>
                         <div class="form-group">
                             <label for="nama">

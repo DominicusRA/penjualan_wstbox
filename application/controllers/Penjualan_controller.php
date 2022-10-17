@@ -17,6 +17,7 @@ class Penjualan_controller extends CI_Controller
             $data['barang'] = $this->barang_m->get();
             $data['penjualan'] = $this->penjualan_m->get();
             $data['customer'] = $this->customer_m->get();
+            $data['kode_terakhir'] = $this->penjualan_m->get_code();
             $this->load->view('transaksi/penjualan_view', $data);
         } else {
             redirect('login_controller');

@@ -21,4 +21,15 @@ class Barang_model extends CI_MODEL
     {
         echo "function put";
     }
+    function get_code()
+    {
+        // return $this->db->query("SELECT kode_bahan FROM bahan ORDER BY kode_bahan DESC LIMIT 1");
+
+        $this->db->select('kode');
+        $this->db->from('barang');
+        $this->db->order_by('id_barang', 'DESC');
+        $this->db->limit(1);
+        $data = $this->db->get();
+        return $data;
+    }
 }

@@ -12,6 +12,7 @@ class Barang_controller extends CI_Controller
     {
         if ($this->session->userdata('nama') != null) {
             $data['barang'] = $this->barang_m->get();
+            $data['kode_terakhir'] = $this->barang_m->get_code();
             $this->load->view('master/barang_view', $data);
         } else {
             redirect('login_controller');
