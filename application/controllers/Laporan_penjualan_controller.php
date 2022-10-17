@@ -13,30 +13,34 @@ class laporan_penjualan_controller extends CI_Controller
     }
     public function index()
     {
-        $data_filter = [];
-        $data_date = [];
-        $data = [];
-        if ($this->input->post('id_barang') != null) {
-            $data_filter += array('barang.id_barang' => $this->input->post('id_barang'));
-        }
-        if ($this->input->post('id_user') != null) {
-            $data_filter += array('user.id_user' => $this->input->post('id_user'));
-        }
-        if ($this->input->post('id_customer') != null) {
-            $data_filter += array('customer.id_customer' => $this->input->post('id_customer'));
-        }
-        // dipikirkan lagi
-        if ($this->input->post('tanggal_awal') != null && $this->input->post('tanggal_akhir') != null) {
-            $data_date += array('tanggal_awal' => $this->input->post('tanggal_awal'));
-            $data_date += array('tanggal_akhir' => $this->input->post('tanggal_akhir'));
-        }
+        if ($this->session->userdata('nama') != null) {
+            $data_filter = [];
+            $data_date = [];
+            $data = [];
+            if ($this->input->post('id_barang') != null) {
+                $data_filter += array('barang.id_barang' => $this->input->post('id_barang'));
+            }
+            if ($this->input->post('id_user') != null) {
+                $data_filter += array('user.id_user' => $this->input->post('id_user'));
+            }
+            if ($this->input->post('id_customer') != null) {
+                $data_filter += array('customer.id_customer' => $this->input->post('id_customer'));
+            }
+            // dipikirkan lagi
+            if ($this->input->post('tanggal_awal') != null && $this->input->post('tanggal_akhir') != null) {
+                $data_date += array('tanggal_awal' => $this->input->post('tanggal_awal'));
+                $data_date += array('tanggal_akhir' => $this->input->post('tanggal_akhir'));
+            }
 
-        $data['barang'] = $this->barang_m->get();
-        $data['user'] = $this->user_m->get();
-        $data['customer'] = $this->customer_m->get();
-        $data['penjualan'] = $this->laporan_penjualan_m->get($data_filter, $data_date);
-        // echo (json_encode($data['penjualan']->result()));
-        $this->load->view('laporan/penjualan_view', $data);
+            $data['barang'] = $this->barang_m->get();
+            $data['user'] = $this->user_m->get();
+            $data['customer'] = $this->customer_m->get();
+            $data['penjualan'] = $this->laporan_penjualan_m->get($data_filter, $data_date);
+            // echo (json_encode($data['penjualan']->result()));
+            $this->load->view('laporan/penjualan_view', $data);
+        } else {
+            redirect('login_controller');
+        };
     }
     public function add()
     {
