@@ -12,7 +12,7 @@ class Laporan_grafik_model extends CI_MODEL
             $this->db->join('barang', 'barang.id_barang=penjualan.id_barang');
             $this->db->join('customer', 'customer.id_customer=penjualan.id_customer');
             $this->db->join('user', 'user.id_user=penjualan.id_user');
-            $this->db->group_by('user.id_user,barang.id_barang');
+            $this->db->group_by('EXTRACT(MONTH FROM penjualan.tanggal)');
             $this->db->order_by('customer.id_customer', 'DESC');
         } else {
             $this->db->select('barang.id_barang, user.id_user,user.nama,barang.nama as barang,EXTRACT(MONTH FROM penjualan.tanggal) AS bulan, penjualan.tanggal');

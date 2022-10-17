@@ -40,7 +40,9 @@
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
-
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
             </ul>
 
             <!-- Right navbar links -->
@@ -270,6 +272,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <?php
+                                    $var_jumlah = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                                    foreach ($penjualan->result_array() as $data_penjualan) {
+                                        $bulan = $data_penjualan['bulan'] - 1;
+                                        $var_jumlah[$bulan] = $data_penjualan['jumlah'];
+                                    }
+                                    print_r($var_jumlah);
+                                    ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -329,39 +343,46 @@
     <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
-
+    <?php
+    $var_jumlah = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    foreach ($penjualan->result_array() as $data_penjualan) {
+        $bulan = $data_penjualan['bulan'] - 1;
+        $var_jumlah[$bulan] = $data_penjualan['jumlah'];
+    }
+    print_r($var_jumlah);
+    ?>
 
     <script>
+        console.log(<?= json_encode($var_jumlah) ?>);
+        console.log(<?= json_encode($penjualan->result()) ?>);
+        var data_set = [{
+                label: 'Kardus Large',
+                backgroundColor: 'rgba(60,141,188,0.9)',
+                borderColor: 'rgba(60,141,188,0.8)',
+                pointRadius: false,
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: <?= json_encode($var_jumlah) ?>
+            },
+            {
+                label: 'Kardus Large',
+                backgroundColor: 'rgba(60,141,188,0.9)',
+                borderColor: 'rgba(60,141,188,0.8)',
+                pointRadius: false,
+                pointColor: '#3b8bba',
+                pointStrokeColor: 'rgba(60,141,188,1)',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(60,141,188,1)',
+                data: <?= json_encode($var_jumlah) ?>
+            }
+        ]
+
         $(function() {
-
-
-
-
             var areaChartData = {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
-                datasets: [{
-                        label: 'Kardus Large',
-                        backgroundColor: 'rgba(60,141,188,0.9)',
-                        borderColor: 'rgba(60,141,188,0.8)',
-                        pointRadius: false,
-                        pointColor: '#3b8bba',
-                        pointStrokeColor: 'rgba(60,141,188,1)',
-                        pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(60,141,188,1)',
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    },
-                    {
-                        label: 'Kardus Medium',
-                        backgroundColor: 'rgba(210, 214, 222, 1)',
-                        borderColor: 'rgba(210, 214, 222, 1)',
-                        pointRadius: false,
-                        pointColor: 'rgba(210, 214, 222, 1)',
-                        pointStrokeColor: '#c1c7d1',
-                        pointHighlightFill: '#fff',
-                        pointHighlightStroke: 'rgba(220,220,220,1)',
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                ]
+                datasets: data_set
             }
 
             //-------------

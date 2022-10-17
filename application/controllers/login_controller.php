@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class login_controller extends CI_Controller
+class Login_controller extends CI_Controller
 {
     function __construct()
     {

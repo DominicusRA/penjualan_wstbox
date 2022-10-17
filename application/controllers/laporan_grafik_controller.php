@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class laporan_grafik_controller extends CI_Controller
+class Laporan_grafik_controller extends CI_Controller
 {
     function __construct()
     {
