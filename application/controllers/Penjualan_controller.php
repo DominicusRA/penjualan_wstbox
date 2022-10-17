@@ -30,6 +30,7 @@ class Penjualan_controller extends CI_Controller
             'no_transaksi' => $this->input->post('no_transaksi'),
             'id_customer' => $this->input->post('id_customer'),
             'id_barang' => $this->input->post('id_barang'),
+            'id_user' => $this->session->userdata('id_user'),
             'harga' => $this->input->post('harga'),
             'jumlah' => $this->input->post('jumlah'),
             'tanggal' => date('Y/m/d')

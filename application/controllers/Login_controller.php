@@ -28,7 +28,8 @@ class Login_controller extends CI_Controller
             // echo "ada ada";
             foreach ($status as $apps) {
                 $session_data = array(
-                    'nama' => $apps->nama
+                    'nama' => $apps->nama,
+                    'id_user' => $apps->id_user
                 );
                 $this->session->set_userdata($session_data);
             }
