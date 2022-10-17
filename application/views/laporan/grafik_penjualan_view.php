@@ -272,18 +272,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <!-- <div class="card">
                                 <div class="card-body">
                                     <?php
-                                    $var_jumlah = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-                                    foreach ($penjualan->result_array() as $data_penjualan) {
-                                        $bulan = $data_penjualan['bulan'] - 1;
-                                        $var_jumlah[$bulan] = $data_penjualan['jumlah'];
-                                    }
-                                    print_r($var_jumlah);
+                                    // $var_jumlah = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+                                    // foreach ($penjualan->result_array() as $data_penjualan) {
+                                    //     $bulan = $data_penjualan['bulan'] - 1;
+                                    //     $var_jumlah[$bulan] = $data_penjualan['jumlah'];
+                                    // }
+                                    // print_r($var_jumlah);
+                                    // 
                                     ?>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div><!-- /.container-fluid -->
@@ -345,15 +346,18 @@
     <script src="<?php echo base_url() ?>assets/dist/js/demo.js"></script>
     <?php
     $var_jumlah = array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+    $var_jumlah2 = array();
     foreach ($penjualan->result_array() as $data_penjualan) {
         $bulan = $data_penjualan['bulan'] - 1;
-        $var_jumlah[$bulan] = $data_penjualan['jumlah'];
+        $var_jumlah[$bulan] += $data_penjualan['jumlah'];
+        $var_jumlah2 += [$data_penjualan['bulan'] => $data_penjualan['jumlah']];
     }
-    print_r($var_jumlah);
+    // print_r($var_jumlah);
     ?>
 
     <script>
         console.log(<?= json_encode($var_jumlah) ?>);
+        console.log(<?= json_encode($var_jumlah2) ?>);
         console.log(<?= json_encode($penjualan->result()) ?>);
         var data_set = [{
                 label: 'Kardus Large',
