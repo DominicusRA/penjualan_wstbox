@@ -189,7 +189,7 @@
                                                 <label>Range Tanggal</label>
                                             </div>
                                             <div class="col"></div>
-                                            <div class="col">
+                                            <!-- <div class="col">
                                                 <label>Barang</label>
                                             </div>
                                             <div class="col">
@@ -197,7 +197,7 @@
                                             </div>
                                             <div class="col">
                                                 <label>User</label>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="row">
                                             <div class="col">
@@ -207,7 +207,7 @@
                                             <div class="col">
                                                 <input type="date" id="tanggal_akhir" class="form-control" name="tanggal_akhir">
                                             </div>
-                                            <div class="col">
+                                            <!-- <div class="col">
                                                 <div class="form-group">
                                                     <select name="id_barang" class="form-control select2" style="width: 100%;">
                                                         <option selected="selected"></option>
@@ -240,7 +240,7 @@
                                                         <option value="<?= $data_user['id_user'] ?>"><?= $data_user['nama'] ?></option>
                                                     <?php endforeach ?>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </form>
                                 </div>
@@ -360,7 +360,7 @@
         console.log(<?= json_encode($var_jumlah2) ?>);
         console.log(<?= json_encode($penjualan->result()) ?>);
         var data_set = [{
-                label: 'Kardus Large',
+                label: '',
                 backgroundColor: 'rgba(60,141,188,0.9)',
                 borderColor: 'rgba(60,141,188,0.8)',
                 pointRadius: false,
